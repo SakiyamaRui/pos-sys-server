@@ -1,0 +1,36 @@
+{
+  "name": "pos-sys-server",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "nodemon --exec babel-node ./bin/www"
+  },
+  "dependencies": {
+    "@babel/core": "^7.22.17",
+    "@babel/node": "^7.22.15",
+    "@babel/preset-env": "^7.22.15",
+    "cookie-parser": "~1.4.4",
+    "cors": "^2.8.5",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "express-http-proxy": "^2.0.0",
+    "express-mysql-session": "^3.0.0",
+    "express-session": "^1.17.3",
+    "flakeid": "^1.0.1",
+    "http-errors": "~1.6.3",
+    "http-proxy-middleware": "^2.0.6",
+    "install": "^0.13.0",
+    "ip": "^1.1.8",
+    "jade": "~1.11.0",
+    "morgan": "~1.9.1",
+    "mysql": "^2.18.1",
+    "nanoid": "^3.3.6",
+    "nodemon": "^3.0.1"
+  },
+  "nodemonConfig": {
+    "env": {
+      "NODE_ENV": "dev",
+      "PORT": 3030
+    }
+  }
+}
