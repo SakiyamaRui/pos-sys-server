@@ -33,6 +33,13 @@ const kosenPayPaymentCtl = async (req, res) => {
             throw e;
         });
 
+        if (result.false) {
+            res.json({
+                ...paymentResults,
+            });
+            return false;
+        }
+
         // セッションにIDの保存
         try {
             req.session.data.orderNumber = paymentResults.order_number;
