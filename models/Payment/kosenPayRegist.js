@@ -32,6 +32,7 @@ const kousenpayRegist = ({
             //
             const log_id = flakeId.gen();
 
+            console.log(user_id);
             await getBalance(user_id, transaciton).catch((e) => {
                 throw e;
             });
