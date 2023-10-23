@@ -9,6 +9,8 @@ import registeredUserLogoutCtl from "../../../controllers/api_v1/register/regist
 import orderRegistCtl from "../../../controllers/api_v1/register/orderRegist";
 import getOrderItemsCtl from "../../../controllers/api_v1/register/getOrderItems";
 import payment from "./payment";
+import orderMargeCtl from "../../../controllers/api_v1/register/orderMarge";
+import orderResetCtl from "../../../controllers/api_v1/register/orderReset";
 const router = Router();
 
 /**
@@ -51,6 +53,16 @@ router.post("/orderItemsRegist", orderRegistCtl);
  * 注文情報の取得
  */
 router.get("/getOrderItems", getOrderItemsCtl);
+
+/**
+ * 注文のマージ
+ */
+router.post("/orderMarge", orderMargeCtl);
+
+/**
+ * 注文取り消し
+ */
+router.post("/orderCancel", orderResetCtl);
 
 
 /**
