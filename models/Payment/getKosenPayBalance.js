@@ -19,7 +19,7 @@ const getBalance = (
                 resolve(0);
             }
 
-            console.log(balance);
+            console.log(result[0]);
             resolve(result[0].balance || 0);
         }catch(e) {
             reject(e);
