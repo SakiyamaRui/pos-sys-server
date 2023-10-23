@@ -32,6 +32,10 @@ const kousenpayRegist = ({
             //
             const log_id = flakeId.gen();
 
+            await getBalance(user_id, transaciton).catch((e) => {
+                throw e;
+            });
+
             // データを登録
             await query(
                 "INSERT INTO `KOSEN_PAY_LOG` (`log_id`,`user_id`,`type`,`amount`,`payment_id`) VALUES (?,?,?,?,?);",
