@@ -31,7 +31,7 @@ const kosenPayPaymentCtl = async (req, res) => {
             throw e;
         });
 
-        if (paymentResults.result) {
+        if (paymentResults.result == false) {
             res.json({
                 ...paymentResults,
             });
