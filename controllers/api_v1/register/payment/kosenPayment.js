@@ -12,8 +12,8 @@ const kosenPayPaymentCtl = async (req, res) => {
 
         console.log(req.body)
 
-        // const user_id = req.body?.user_id || null;
-        const user_id = "test";
+        const user_id = req.body?.user_id || null;
+        // const user_id = "test";
 
         if (user_id === null) {
             throw new Error("user_id is null");
