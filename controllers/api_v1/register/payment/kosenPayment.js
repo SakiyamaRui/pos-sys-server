@@ -10,8 +10,6 @@ const kosenPayPaymentCtl = async (req, res) => {
         const registered_user = req.session?.data?.registeredUser[0]?.log_id || "order-sys";
         const order_id_list = req.session?.data?.orderIdList || req.body.order_id_list;
 
-        console.log(req.body)
-
         const user_id = req.body?.user_id || null;
         // const user_id = "test";
 
@@ -33,7 +31,7 @@ const kosenPayPaymentCtl = async (req, res) => {
             throw e;
         });
 
-        if (result.false) {
+        if (paymentResults.result) {
             res.json({
                 ...paymentResults,
             });
