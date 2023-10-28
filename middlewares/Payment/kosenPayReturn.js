@@ -1,5 +1,5 @@
 import { commit, getTransaction, release, rollback } from "../../models/DB/DB";
-import { getPaymentTransaction } from "../../models/DB/Payment";
+import { getPaymentTransaction, paymentRelease } from "../../models/DB/Payment";
 import kousenpayRegist from "../../models/Payment/kosenPayRegist";
 import paymentTableRegist from "../../models/Payment/paymentTableRegist";
 import getKosenPayBalance from "../../models/Payment/getKosenPayBalance";
@@ -90,7 +90,9 @@ const kosenPayReturnRegist = ({
             reject(e);
         }finally{
             await release(transaction);
-            await release(paymentTransaction);
+            await paymentRelease(paymentTransaction).catch((err) => {
+                console.log(err);
+            });
         }
     });
 }

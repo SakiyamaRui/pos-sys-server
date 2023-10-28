@@ -22,7 +22,7 @@ const getOrderItems = (
             const placeholder = "?,".repeat(order_id_list.length).slice(0,-1);
 
             let result = await query(
-                "SELECT `ORDER_LINES`.*, `PRODUCT_MASTER`.`product_name` FROM `ORDER_LINES` INNER JOIN `PRODUCT_MASTER` ON `ORDER_LINES`.`product_uuid` = `PRODUCT_MASTER`.`product_uuid` WHERE `order_id` IN (" + placeholder +") AND `deleted` = 0;",
+                "SELECT `ORDER_LINES`.*, `PRODUCT_MASTER`.`product_name`, `PRODUCT_MASTER`.`product_id` FROM `ORDER_LINES` INNER JOIN `PRODUCT_MASTER` ON `ORDER_LINES`.`product_uuid` = `PRODUCT_MASTER`.`product_uuid` WHERE `order_id` IN (" + placeholder +") AND `deleted` = 0;",
                 order_id_list,
                 transaction
             ).catch((err) => {

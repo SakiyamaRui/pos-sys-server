@@ -71,13 +71,15 @@ const orderRegist = (
                 }));
 
                 // 変更を行う行をロック
-                var productStockList = await productStockMasterTableRock(
-                    lockIdList.data,
-                    lockIdList.type,
-                    transaction
-                ).catch((err) => {
-                    throw err;
-                });
+                if (lockIdList.data?.length > 0) {
+                    var productStockList = await productStockMasterTableRock(
+                        lockIdList.data,
+                        lockIdList.type,
+                        transaction
+                    ).catch((err) => {
+                        throw err;
+                    });
+                }
 
                 if (registed_order_id_list.length > 0){
                     // 在庫情報をリセットする

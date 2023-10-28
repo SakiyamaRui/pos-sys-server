@@ -5,7 +5,7 @@ import DB_CONFIG from "../../config/DB";
  * DBプールの作成
  */
 try {
-    const CONF = DB_CONFIG[process.env.NODE_ENV];
+    const CONF = DB_CONFIG[process.env.NODE_ENV || "product"];
 
     var dbPool = createPool({
         // DBホスト名
@@ -23,7 +23,7 @@ try {
         // 文字コード
         charset: CONF.charset || "utf8",
         // コネクション数
-        connectionLimit: CONF.connectionLimit || 5,
+        connectionLimit: CONF.connectionLimit || 15,
     });
 }catch (e) {
     console.log("DBコネクションの作成に失敗しました");

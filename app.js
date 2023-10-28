@@ -11,7 +11,7 @@ const MySQLStore = require('express-mysql-session')(session);
 
 // DBオプションの取得
 import dbOption from "./config/DB";
-const sessionDBOptions = dbOption.session[process.env.NODE_ENV || "dev"];
+const sessionDBOptions = dbOption.session[process.env.NODE_ENV || "product"];
 
 // MySQLセッションストア
 const sessionStore = new MySQLStore(sessionDBOptions);
@@ -56,8 +56,8 @@ const indexRouter = require("./routes/index");
 app.use('/', indexRouter);
 
 
-app.use('/', createProxyMiddleware({
-  target: `http://${ip.address()}:3001`,
+/*app.use('/', createProxyMiddleware({
+  target: `http://${ip.address()}:3000`,
   changeOrigin: true,
   secure: false,
   xfwd: true,
@@ -67,9 +67,9 @@ app.use('/', createProxyMiddleware({
   headers: {
     "Connection": "keep-alive",
     "Content-Type": "text/xml;charset=UTF-8",
-    "Accept": "*/"
+    "Accept": "*"
   },
-}));
+}));*/
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

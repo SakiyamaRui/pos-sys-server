@@ -6,7 +6,7 @@ import { beginTransaction } from "./DB";
  * DBプールの作成
  */
 try {
-    const CONF = DB_CONFIG.payment[process.env.NODE_ENV];
+    const CONF = DB_CONFIG.payment[process.env.NODE_ENV || "product"];
 
     var dbPool = createPool({
         // DBホスト名
@@ -24,7 +24,7 @@ try {
         // 文字コード
         charset: CONF.charset || "utf8",
         // コネクション数
-        connectionLimit: CONF.connectionLimit || 5,
+        connectionLimit: CONF.connectionLimit || 15,
     });
 }catch (e) {
     console.log("DBコネクションの作成に失敗しました");
@@ -87,8 +87,21 @@ const getPaymentTransaction = (connection) => {
     });
 }
 
+const paymentRelease = async (connection) => {
+    try {
+        await connection.release();
+
+        if (dbPool._freeConnections.indexOf(connection) == -1) {
+            console.log("Not Release Connection");
+        }
+    }catch (e) {
+        console.log(e);
+    }
+}
+
 
 export {
     getPaymentConnection,
     getPaymentTransaction,
+    paymentRelease,
 }
