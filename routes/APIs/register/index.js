@@ -11,6 +11,7 @@ import getOrderItemsCtl from "../../../controllers/api_v1/register/getOrderItems
 import payment from "./payment";
 import orderMargeCtl from "../../../controllers/api_v1/register/orderMarge";
 import orderResetCtl from "../../../controllers/api_v1/register/orderReset";
+import getOrderItemsFromNumber from "../../../controllers/api_v1/register/getOrderItemsFromNumber";
 const router = Router();
 
 /**
@@ -63,6 +64,11 @@ router.post("/orderMarge", orderMargeCtl);
  * 注文取り消し
  */
 router.post("/orderCancel", orderResetCtl);
+
+/**
+ * 注文番号から商品情報を取得
+ */
+router.post("/orderDataGet", getOrderItemsFromNumber);
 
 
 /**

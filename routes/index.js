@@ -21,4 +21,19 @@ router.get('/test', async (req, res, next) => {
   res.send("result");
 });
 
+router.post('/productRegist', async (req, res) => {
+  let result = await productRegist({
+      product_name: req.body.product_name,
+      product_id: req.body.product_id,
+      price: req.body.price,
+      reception: true,
+      stock_check: false,
+    }).catch(err => {
+      console.log(err);
+      return false;
+    });
+
+    res.send(result);
+})
+
 module.exports = router;
